@@ -1,0 +1,73 @@
+{% extends "SoftlogoCMSBundle::Layout.html.twig" %}
+				{% block menu %}
+
+					<li><a href="{{path('fos_user_profile_show')}}"><span class="label-nav">Pokaż profil</span></a></li>
+					<li><a href="{{path('fos_user_profile_edit')}}"><span class="label-nav">Edytuj profil</span></a></li>
+					<li><a href="{{path('sonata_user_profile_edit_authentication')}}"><span class="label-nav">Zmień hasło</span></a></li>
+					<li><a href="{{path('fos_user_security_logout')}}"><span class="label-nav">Wyloguj</span></a></li>
+
+				{% endblock %}
+
+{% block content %}
+<div class="body-wrapper">
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-md-12 col-sm-12">
+				{% block profile_title %}
+				<h1 class="">Profil użytkownika</h1>
+				{% endblock %}
+			</div>
+			<div class="col-md-12 col-sm-12">
+
+			</div>
+
+			<div class="col-md-12 col-sm-12">
+				{% block profile_content %}
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">Dane klienta</h3>
+					</div>
+					<div class="panel-body">
+
+						<table class="table table bordered table-striped">
+							<tr><td>Imię</td><td>{{user.firstname}}</td></tr>
+							<tr><td>Nazwisko</td><td>{{user.firstname}}</td></tr>
+							<tr><td>Telefon</td><td>{{user.phone}}</td></tr>
+							<tr><td>Email</td><td>{{user.email}}</td></tr>
+							<tr><td>Adres</td><td>{{user.addresses[0].address}}</td></tr>
+							<tr><td>Miasto, Kod pocztowy</td><td>{{user.addresses[0].city}}, {{user.addresses[0].postalcode}}</td></tr>
+						</table>
+
+
+
+					</div>
+				</div>
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						<h3 class="panel-title">Dane do faktury</h3>
+					</div>
+					<div class="panel-body">
+
+						<table class="table table-striped">
+							<tr><td>Firma</td><td>{{user.company}}</td></tr>
+							<tr><td>NIP</td><td>{{user.nip}}</td></tr>
+							<tr><td>Adres</td><td>{{user.addresses[1].address}}</td></tr>
+							<tr><td>Miasto, Kod pocztowy</td><td>{{user.addresses[1].city}}, {{user.addresses[1].postalcode}}</td></tr>
+						</table>
+
+
+
+					</div>
+				</div>
+				{% endblock %}
+			</div>
+		</div>
+
+
+	</div>
+
+</div>
+{% endblock %}

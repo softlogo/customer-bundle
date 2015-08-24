@@ -1,0 +1,23 @@
+parameters:
+#    softlogo_customer.example.class: Softlogo\CustomerBundle\Example
+
+services:
+#    softlogo_customer.example:
+#        class: %softlogo_customer.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    softlogo_customer.admin.customer:
+        class: Softlogo\CustomerBundle\Admin\CustomerAdmin
+        arguments: [null, Softlogo\CustomerBundle\Entity\Customer, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Shop, label: Customers }
+        #tags:
+            #- {name: sonata.admin, manager_type: orm, group: admin, label: SimpleCustomer}
+        calls:
+            - [ setUserManager, [@fos_user.user_manager]]
+
+    softlogo_customer.profile.form.type:
+        class: Softlogo\CustomerBundle\Form\Type\ProfileType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: softlogo_customer_profile }
+

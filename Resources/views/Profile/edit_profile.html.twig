@@ -1,0 +1,144 @@
+{% extends "SoftlogoCustomerBundle:Profile:show.html.twig" %}
+
+{% block profile_title %}
+<h1 class="">{{ "title_user_account" | trans({}, 'SonataUserBundle')}} - {{ "title_user_edit_profile" | trans({}, 'SonataUserBundle')}}</h1>
+{% endblock %}
+{% block profile_content %}
+
+
+
+
+{% block sonata_profile_content %}
+
+{{ form_errors(form) }}
+
+{% form_theme form _self %}
+
+<form action="{{ path('sonata_user_profile_edit') }}" method="POST" class="form-standard">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">Możesz zmienić swoje dane wykorzystywane do skladania zamówień oraz logowania w sklepie</h3>
+		</div>
+
+
+
+		<div class="panel-body">
+
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Dane kontaktowe</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<!--Left Column-->
+						<div class="col-lg-6 col-md-6 col-sm-6">
+							{{form_row(form.firstname)}}
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6">
+							{{form_row(form.lastname)}}
+						</div>
+
+					</div>
+					<div class="row">
+						<!--Left Column-->
+						<div class="col-lg-6 col-md-6 col-sm-6">
+							{{form_row(form.email)}}
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6">
+							{{form_row(form.phone)}}
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<h3 class="panel-title">Adres wysyłki</h3>
+						</div>
+						<div class="panel-body">
+							{{form_row(form.addresses[0].name, { 'attr':{'required':'true'} })}}
+							{{form_row(form.addresses[0].address, { 'attr':{'required':'true'} })}}
+							<div class="row">
+								<!--Left Column-->
+								<div class="col-lg-6 col-md-6 col-sm-6">
+									{{form_row(form.addresses[0].city, { 'attr':{'required':'true'} })}}
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6">
+									{{form_row(form.addresses[0].postalcode)}}
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title">Dane do faktury (opcjonalnie)</h3>
+				</div>
+				<div class="panel-body">
+
+					<div class="row">
+						<div class="col-md-12">
+
+							{{form_row(form.company)}}
+						</div>
+						<!--Left Column-->
+
+					</div>
+							{{form_row(form.addresses[1].address, { 'attr':{'required':'true'} })}}
+							<div class="row">
+								<!--Left Column-->
+								<div class="col-lg-6 col-md-6 col-sm-6">
+									{{form_row(form.addresses[1].city, { 'attr':{'required':'true'} })}}
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6">
+									{{form_row(form.addresses[1].postalcode)}}
+								</div>
+
+						<div class="col-lg-6 col-md-6 col-sm-6">
+							{{form_row(form.nip)}}
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6">
+							{{form_row(form.regon)}}
+						</div>
+							</div>
+
+
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+
+				</div>
+			</div>
+			<div class="form-actions">
+				<button type="submit" name="submit"  class="btn btn-primary pull-right">{{ 'sonata_user_submit'|trans({}, 'SonataUserBundle') }}</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="hidden">
+	
+	{{ form_end(form) }}
+	</div>
+</form>
+{% endblock %}
+{% endblock %}

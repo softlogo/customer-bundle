@@ -1,0 +1,95 @@
+<?php
+
+namespace Softlogo\CustomerBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Softlogo\ShopBundle\Entity\Address as Address;
+
+/**
+ * CustomerAddress
+ *
+ * @ORM\Table(name="customer_address")
+ * @ORM\Entity
+ */
+class CustomerAddress extends Address
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+	/**
+	 *
+	 * @ORM\ManyToOne(targetEntity="Customer")
+	 */
+	private $customer;
+
+	/**
+	 *
+	 * @ORM\ManyToOne(targetEntity="Softlogo\ShopBundle\Entity\AddressType")
+	 */
+	private $addressType;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set customer
+     *
+     * @param \Softlogo\CustomerBundle\Entity\Customer $customer
+     * @return CustomerAddress
+     */
+    public function setCustomer(\Softlogo\CustomerBundle\Entity\Customer $customer = null)
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return \Softlogo\CustomerBundle\Entity\Customer 
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
+     * Set addressType
+     *
+     * @param \Softlogo\ShopBundle\Entity\AddressType $addressType
+     *
+     * @return CustomerAddress
+     */
+    public function setAddressType(\Softlogo\ShopBundle\Entity\AddressType $addressType = null)
+    {
+        $this->addressType = $addressType;
+
+        return $this;
+    }
+
+    /**
+     * Get addressType
+     *
+     * @return \Softlogo\ShopBundle\Entity\AddressType
+     */
+    public function getAddressType()
+    {
+        return $this->addressType;
+    }
+}

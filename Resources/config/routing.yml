@@ -1,0 +1,3 @@
+softlogo_customer_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SoftlogoCustomerBundle:Default:index }

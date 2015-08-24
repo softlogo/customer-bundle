@@ -1,0 +1,36 @@
+{
+    "name" : "softlogo/customer-bundle",
+    "description" : "Customer Bundle",
+    "type" : "symfony-bundle",
+    "authors" : [{
+        "name" : "borysjank",
+        "email" : "borysjank@gmail.com"
+    }],
+    "keywords" : [
+        "customer bundle"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+
+    },
+    "autoload" : {
+        "psr-0" : {
+            "Softlogo\\CustomerBundle" : ""
+        }
+    },
+    "target-dir" : "Softlogo/CustomerBundle",
+    "repositories": [
+        {
+        
+        }
+    ],
+    "extra" : {
+    "branch-alias" : {
+            "dev-master" : "1.0-dev"
+        }
+    }
+}
+
+
